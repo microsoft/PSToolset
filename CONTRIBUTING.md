@@ -17,3 +17,9 @@ or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any addi
 # technical guidance
 
 build instructions, coding conventions, or a project roadmap 
+
+
+Use VS Code.
+Every exported function needs a documentation with example.
+Follow indentation used throughout the project.
+Common aliases like foreach and where are used as is. 
