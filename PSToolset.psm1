@@ -18,9 +18,9 @@ Set-StrictMode -Off
 . "$PSScriptRoot\Xml.ps1"
 
 # Test that no other version of this module is imported
-if( Get-Module Toolset )
+if( Get-Module PSToolset )
 {
-    Write-Warning 'Several versions of Toolset detected. Check your $PROFILE and $env:PSModulePath and cleanup extra modules via Remove-Module.'
+    Write-Warning 'Several versions of PSToolset detected. Check your $PROFILE and $env:PSModulePath and cleanup extra modules via Remove-Module.'
 }
 
 # Setting up aliases

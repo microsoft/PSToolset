@@ -1,9 +1,9 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
-# Test if we did that override already, Toolset can be
+# Test if we did that override already, PSToolset can be
 # loaded multiple times to one Powershell session
-if( $GLOBAL:ToolsetAutoCompleteOptions )
+if( $GLOBAL:PSToolsetAutoCompleteOptions )
 {
     return
 }
@@ -14,18 +14,18 @@ End
 {
     if ($options -ne $null)
     {
-        $options += $GLOBAL:ToolsetAutoCompleteOptions
+        $options += $GLOBAL:PSToolsetAutoCompleteOptions
     }
     else
     {
-        $options = $GLOBAL:ToolsetAutoCompleteOptions
+        $options = $GLOBAL:PSToolsetAutoCompleteOptions
     }
 '@)
 
 # Overrides
-$GLOBAL:ToolsetAutoCompleteOptions = @{ CustomArgumentCompleters = @{}; NativeArgumentCompleters = @{} }
+$GLOBAL:PSToolsetAutoCompleteOptions = @{ CustomArgumentCompleters = @{}; NativeArgumentCompleters = @{} }
 
-$GLOBAL:ToolsetAutoCompleteOptions['NativeArgumentCompleters']['git'] =
+$GLOBAL:PSToolsetAutoCompleteOptions['NativeArgumentCompleters']['git'] =
 {
     param( $completed, $ast )
 
@@ -50,7 +50,7 @@ $GLOBAL:ToolsetAutoCompleteOptions['NativeArgumentCompleters']['git'] =
 
 <# Sample how to make similar tab expansion for Powershell commands
 
-$GLOBAL:ToolsetAutoCompleteOptions['CustomArgumentCompleters']['Remove-Outgoing:Branch'] =
+$GLOBAL:PSToolsetAutoCompleteOptions['CustomArgumentCompleters']['Remove-Outgoing:Branch'] =
 {
     param($commandName, $parameterName, $completed, $commandAst, $fakeBoundParameter)
 

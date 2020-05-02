@@ -4,11 +4,7 @@
 @{
 
 # Script module or binary module file associated with this manifest
-RootModule = 'Toolset.psm1'
-
-# Private data to pass to the module specified in RootModule/ModuleToProcess
-# This field is used to specify codebox repository name used for this module
-PrivateData = 'ToolsetGit'
+RootModule = 'PSToolset.psm1'
 
 # Version number of this module.
 ModuleVersion = '0.9.0'
@@ -98,12 +94,12 @@ FileList =
     'Files.ps1',
     'Functional.ps1',
     'Git.ps1',
+    'PSToolset.psd1',
+    'PSToolset.psm1',
     'Python.ps1',
     'Security.ps1',
     'TabExpansion.ps1',
     'Text.ps1',
-    'Toolset.psd1',
-    'Toolset.psm1',
     'Utils.ps1',
     'Xml.ps1'
 }
