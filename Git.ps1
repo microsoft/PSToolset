@@ -80,7 +80,7 @@ function Open-GitExtensions
     .EXAMPLE
         gite commit
 
-        Open git extension comit dialog for the repo in the current folder
+        Open git extension commit dialog for the repo in the current folder
 
     #>
 

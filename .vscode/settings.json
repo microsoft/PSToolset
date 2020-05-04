@@ -1,0 +1,37 @@
+{
+    "cSpell.enableFiletypes": [
+        "powershell"
+    ],
+    "cSpell.words": [
+        "Aleksandr",
+        "Jupyter",
+        "Kostikov",
+        "Linq",
+        "MSRC",
+        "Passthru",
+        "Retryable",
+        "Toolset",
+        "USERDOMAIN",
+        "adsi",
+        "bing",
+        "datetime",
+        "hashtable",
+        "ldap",
+        "linenumber",
+        "mkdir",
+        "notcontains",
+        "notmatch",
+        "psitem",
+        "psobject",
+        "pstoolset",
+        "repos",
+        "rundll",
+        "steppable",
+        "timespan",
+        "tracert",
+        "xattr",
+        "xcomm",
+        "xelem",
+        "xname"
+    ]
+}

@@ -19,7 +19,7 @@ Author = 'Aleksandr Kostikov, alexko@microsoft.com'
 Copyright = '(c) Microsoft Corporation'
 
 # Description of the functionality provided by this module
-Description = 'Toolset for Powerhsell environment'
+Description = 'Toolset for Powershell environment'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '7.0'
@@ -41,7 +41,7 @@ AliasesToExport = @(
     'first',
     'gite',
     'hl', # highlight
-    'jn', # jyputer notebook
+    'jn', # jupyter notebook
     'last',
     'lock',
     'p', # project

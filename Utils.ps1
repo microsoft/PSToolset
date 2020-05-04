@@ -1,6 +1,11 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+    "PSAvoidGlobalVars", "",
+    Justification="We need global PSToolsetLastRetryError here")]
+param()
+
 function Use-Retries
 {
     <#
@@ -50,18 +55,18 @@ function Use-Retries
         }
         catch
         {
-            ${GLOBAL:CoreXTAutomation.LastRetryError} = $psitem
+            $GLOBAL:PSToolsetLastRetryError = $psitem
 
             Write-Verbose "Retryable action $command failed with error:"
-            Expand-Exception ${GLOBAL:CoreXTAutomation.LastRetryError}.Exception | Write-Verbose
-            Write-Verbose ${GLOBAL:CoreXTAutomation.LastRetryError}.InvocationInfo.PositionMessage
+            Expand-Exception $GLOBAL:PSToolsetLastRetryError.Exception | Write-Verbose
+            Write-Verbose $GLOBAL:PSToolsetLastRetryError.InvocationInfo.PositionMessage
             Write-Verbose "Waiting before the next retry attempt: $interval (minutes)"
 
             Start-Sleep -Seconds ($interval * 60)
         }
     }
 
-    throw "$command failed after $($retryIntervalsInMinutes.Count) attempts. See last error is stored in " + '${GLOBAL:CoreXTAutomation.LastRetryError} or see verbose log for inner exceptions.'
+    throw "$command failed after $($retryIntervalsInMinutes.Count) attempts. See last error is stored in " + '$GLOBAL:PSToolsetLastRetryError or see verbose log for inner exceptions.'
 }
 
 function Set-CmdEnvironment
@@ -103,6 +108,9 @@ function Set-CmdEnvironment
         well.
     #>
 
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSUseShouldProcessForStateChangingFunctions', '',
+        Justification='Intended to be this way')]
     param
     (
         [Parameter( Mandatory = $true )]

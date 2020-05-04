@@ -103,10 +103,10 @@ filter New-XElement
     <#
     .SYNOPSIS
         Create XElement object and attach specified via
-        script blocks other XObjects in a hierarchcal form
+        script blocks other XObjects in a hierarchal form
 
     .EXAMPLE
-        $psitem | xelem "Acls" `
+        $psitem | xelem "AclListRoot" `
             {xmlns xsd "http://www.w3.org/2001/XMLSchema"},
             {xmlns xsi "http://www.w3.org/2001/XMLSchema-instance"},
             {xattr Version "latest"},

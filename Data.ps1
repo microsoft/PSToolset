@@ -228,7 +228,7 @@ function Use-Filter
 
         Alias: f
 
-    .PARAMETER ParamaterPattern
+    .PARAMETER ParameterPattern
         Regex pattern for a parameter. Only not ambiguous matches are accepted.
         All ambiguities are explained via Warnings. If parameter pattern is omitted,
         all existing property names are shown.
@@ -261,7 +261,7 @@ function Use-Filter
 
     param
     (
-        [string] $ParamaterPattern,
+        [string] $ParameterPattern,
         [string] $ValuePattern,
         [switch] $NoValue
     )
@@ -271,10 +271,10 @@ function Use-Filter
     end
     {
         # Display available parameters if no parameter pattern is specified
-        if( -not $paramaterPattern ) { Write-Warning "What property?`n$($accumulator | Get-Parameter | Out-String)"; return }
+        if( -not $parameterPattern ) { Write-Warning "What property?`n$($accumulator | Get-Parameter | Out-String)"; return }
 
         # Resolve parameter name
-        $parameter = $accumulator | Get-Parameter $paramaterPattern -Single
+        $parameter = $accumulator | Get-Parameter $parameterPattern -Single
         if( -not $parameter ) { return }
 
         # No value special case
@@ -357,10 +357,10 @@ function Get-Ini
     # Parsing
     foreach( $line in $content )
     {
-        $commentless = ($line -replace "$comment.*").Trim()
-        if( $commentless.Length -eq 0 ) { continue }
+        $withoutComments = ($line -replace "$comment.*").Trim()
+        if( $withoutComments.Length -eq 0 ) { continue }
 
-        switch -regex ($commentless)
+        switch -regex ($withoutComments)
         {
             "^\[([^\]]+)\]\s*$"
             {
@@ -374,7 +374,7 @@ function Get-Ini
             }
             default
             {
-                Write-Warning "Unknown sentance '$line' in file '$path'. Skipping the line."
+                Write-Warning "Unknown sentence '$line' in file '$path'. Skipping the line."
             }
         }
     }
@@ -389,8 +389,8 @@ function Get-Ini
     # Copy entries from no-section if it's possible
     if( $ini[""] -and $ini[""].Keys )
     {
-        $sectionless = @($ini[""].Keys) | where{ @($ini.keys) -notcontains $psitem }
-        $sectionless | foreach{ $ini[$psitem] = $ini[""][$psitem] }
+        $withoutSection = @($ini[""].Keys) | where{ @($ini.keys) -notcontains $psitem }
+        $withoutSection | foreach{ $ini[$psitem] = $ini[""][$psitem] }
     }
 
     $ini
@@ -445,10 +445,10 @@ function ConvertFrom-Ini
     # Parsing
     foreach( $line in $content )
     {
-        $commentless = ($line -replace "$comment.*").Trim()
-        if( $commentless.Length -eq 0 ) { continue }
+        $withoutComments = ($line -replace "$comment.*").Trim()
+        if( $withoutComments.Length -eq 0 ) { continue }
 
-        switch -regex ($commentless)
+        switch -regex ($withoutComments)
         {
             "^\[([^\]]+)\]\s*$"
             {
@@ -462,7 +462,7 @@ function ConvertFrom-Ini
             }
             default
             {
-                Write-Warning "Unknown sentance '$line' in file '$path'. Skipping the line."
+                Write-Warning "Unknown sentence '$line' in file '$path'. Skipping the line."
             }
         }
     }
@@ -477,8 +477,8 @@ function ConvertFrom-Ini
     # Copy entries from no-section if it's possible
     if( $ini[""] -and $ini[""].Keys )
     {
-        $sectionless = @($ini[""].Keys) | where{ @($ini.keys) -notcontains $psitem }
-        $sectionless | foreach{ $ini[$psitem] = $ini[""][$psitem] }
+        $withoutSection = @($ini[""].Keys) | where{ @($ini.keys) -notcontains $psitem }
+        $withoutSection | foreach{ $ini[$psitem] = $ini[""][$psitem] }
     }
 
     $ini
@@ -534,7 +534,7 @@ function Show-Ini
 {
     <#
     .SYNOPSIS
-        Print contents of INI parsed file, received from Get-Ini cmdlet
+        Print contents of INI parsed file, received from Get-Ini command
 
     .DESCRIPTION
         Formats INI file in hash table form to make it console-readable.

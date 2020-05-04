@@ -288,14 +288,14 @@ function Get-Source
 
     function Get-CommandSource
     {
-        # Getting coresponding command object
+        # Getting corresponding command object
         $command = Get-Command $commandName | select -First 1
         if( $command.CommandType -eq "Alias" )
         {
             $command = Get-Command $command.Definition
         }
 
-        # Fixing shortcommings of $command.Definition - it truncates
+        # Fixing shortcomings of $command.Definition - it truncates
         # function start for some reason
         $firstFix = $false
         $command.Definition -split "`r?`n" | foreach `

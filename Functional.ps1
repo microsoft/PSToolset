@@ -28,7 +28,7 @@ function Get-Randomized
         1, 2, 3, 4 | Get-Randomized
 
         Shuffles array elements and outputs array in a random order.
-        Each element is outputed only once.
+        Each element is outputted only once.
     #>
 
     $array = [Collections.ArrayList]::New(@($input))
@@ -77,7 +77,7 @@ function Get-UniqueUnsorted
     .EXAMPLE
         "a","c","b","b","c","z" | Get-UniqueUnsorted
 
-        Would return unique elements of the input array wihtout changing element order: a, c, b, z
+        Would return unique elements of the input array without changing element order: a, c, b, z
 
     .EXAMPLE
         "c", "bb", "a" | Get-UniqueUnsorted Length
@@ -216,7 +216,7 @@ function Test-All( [scriptblock] $Condition = { $psitem -ne $null } )
 
     .EXAMPLE
         @() | all
-        True since there is no element in the unput collection that contradicts
+        True since there is no element in the input collection that contradicts
         the not-null condition.
 
     .NOTES
@@ -387,12 +387,12 @@ function Get-Separation( [scriptblock] $condition )
         The separation is implemented fast and uses hash tables inside.
 
     .PARAMETER Condition
-        Scriptblock that seperates elements in the input collection.
+        Scriptblock that separates elements in the input collection.
 
     .EXAMPLE
         $large, $small = ls | separate {$_.Length -gt 10kb}
 
-        Seperates files in the folder into two categories - large ones
+        Separates files in the folder into two categories - large ones
         that are bigger than 10kb and smaller ones.
     #>
 

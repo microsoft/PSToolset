@@ -1,5 +1,5 @@
 # The purpose and state of the repository
-This module represnts a set of tools for Powershell that I find useful to have available in every Powershell console. It was started as a helper project for some daily work activities and polished over the years as an internal project. Some recent commands rely on Powershell 7 syntax, so the module is marked for PS7, although most of the commands actually should work in older Powershells.
+This module represents a set of tools for Powershell that I find useful to have available in every Powershell console. It was started as a helper project for some daily work activities and polished over the years as an internal project. Some recent commands rely on Powershell 7 syntax, so the module is marked for PS7, although most of the commands actually should work in older Powershell versions.
 
 You are welcome to use and contribute.
 
@@ -13,10 +13,10 @@ cd $modulesFolder
 git clone https://github.com/microsoft/PSToolset
 ```
 
-Powershell should be able to discover modue commands after that. If it doesn't you can import the module explicitly
+Powershell should be able to discover module commands after that. If it doesn't you can import the module explicitly
 
 ```powershell
-ipmo PSToolset
+Import-Module PSToolset
 ```
 
 # Documentation
@@ -59,7 +59,7 @@ ConvertTo-PsObject | construct | Convert a set of variables into a PsObject
 Get-Ini |  | Parse INI file as a hashtable object
 Get-Parameter |  | Get names of all available parameters from input objects
 Import-Ini |  | Imports ini file into Powershell hashtable object
-Show-Ini |  | Print contents of INI parsed file, received from Get-Ini cmdlet
+Show-Ini |  | Print contents of INI parsed file, received from Get-Ini command
 Use-Filter | f | Regex based parameter filter for input objects
 Use-Project | p | Project several parameters from input objects
 
@@ -125,7 +125,7 @@ Name | Alias | Description
 -----|-------|-------------
 New-XAttribute | xattr | Create XAttribute object with specified name and value
 New-XComment | xcomm | Create XComment object with specified value
-New-XElement | xelem | Create XElement object and attach specified via script blocks other XObjects in a hierarchcal form
+New-XElement | xelem | Create XElement object and attach specified via script blocks other XObjects in a hierarchal form
 New-Xmlns | xmlns | Create Xmlns object with specified namespace and value
 New-XName | xname | Create XName object with specified name
 
@@ -133,7 +133,7 @@ New-XName | xname | Create XName object with specified name
 # How to regenerate table of exported commands
 ``` powershell
 
-ipmo PSToolset
+Import-Module PSToolset
 $functions = get-module pstoolset | % ExportedFunctions | % Keys
 $aliases = get-module pstoolset | % ExportedAliases | % Keys
 $map = @{}

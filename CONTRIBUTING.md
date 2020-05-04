@@ -15,7 +15,7 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 # Technical Guidance
-This module doesn't require a build, all the code is in Powershell. While contributing please use the same codding style as used throught the project. It may not be your default codding style, but for the project consistency it would be better to use the same style everywhere.
+This module doesn't require a build, all the code is in Powershell. While contributing please use the same codding style as used throughout the project. It may not be your default codding style, but for the project consistency it would be better to use the same style everywhere.
 
 I personally work with VS Code with Powershell code nowadays. But any editor would do.
 

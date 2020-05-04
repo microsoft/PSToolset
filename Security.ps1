@@ -10,7 +10,7 @@ function Invoke-Elevated
     .DESCRIPTION
         Executes script in an elevated Powershell session. If elevation is needed,
         user is prompted via UAC, new elevated process is created, input and output
-        objects are transfered between processes.
+        objects are transferred between processes.
 
         Beware that not all objects are deserialized well by internally used
         Import-CliXml. If output received is unreadable try using | Out-String
@@ -148,16 +148,18 @@ function Set-DelayLock
         Lock machine after the specified timeout
     #>
 
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSUseShouldProcessForStateChangingFunctions', '',
+        Justification='Intended to be this way')]
     param
     (
         [Parameter(Mandatory = $true)] [timespan] $Timeout
     )
 
-
     "Setting timer for $timeout"
     "Computer would lock at $((Get-Date) + $timeout)"
-    $job = Start-Job -ArgumentList ($timeout.TotalSeconds) -ScriptBlock {
+    Start-Job -ArgumentList ($timeout.TotalSeconds) -ScriptBlock {
         Start-Sleep -Seconds $args[0]
         rundll32.exe user32.dll,LockWorkStation
-    }
+    } | Out-Null
 }

@@ -57,7 +57,7 @@ function Get-FileEncoding
 
     .DESCRIPTION
         Useful if you want to update large volume of files and don't want
-        to have regressions comming from encoding changes as a side-effecr.
+        to have regressions coming from encoding changes as a side-effect.
 
     .PARAMETER Path
         The path to the file you need get encoding from.
@@ -81,7 +81,7 @@ function Get-FileEncoding
         [string] $Path
     )
 
-    function Test-Preamle( $encoding, [byte[]] $filePreamble )
+    function Test-Preamble( $encoding, [byte[]] $filePreamble )
     {
         [byte[]] $preamble = $encoding.GetPreamble()
 
@@ -112,7 +112,7 @@ function Get-FileEncoding
 
     foreach( $encoding in $knownEncodings )
     {
-        if( Test-Preamle $encoding $byte )
+        if( Test-Preamble $encoding $byte )
         {
             return $encoding
         }
