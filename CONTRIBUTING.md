@@ -14,12 +14,9 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) 
 or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-# technical guidance
+# Technical Guidance
+This module doesn't require a build, all the code is in Powershell. While contributing please use the same codding style as used throught the project. It may not be your default codding style, but for the project consistency it would be better to use the same style everywhere.
 
-build instructions, coding conventions, or a project roadmap 
+I personally work with VS Code with Powershell code nowadays. But any editor would do.
 
-
-Use VS Code.
-Every exported function needs a documentation with example.
-Follow indentation used throughout the project.
-Common aliases like foreach and where are used as is. 
+All exported commands need to provide documentation with an example.

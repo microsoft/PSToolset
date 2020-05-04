@@ -1,25 +1,23 @@
-# the purpose and state of the repository
-Set of tools for Powershell. It was started as a helper project for daily stuff but got polished over the years. Uses some constructs from Powershell 7, so module is marked for PS7.
+# The purpose and state of the repository
+This module represnts a set of tools for Powershell that I find useful to have available in every Powershell console. It was started as a helper project for some daily work activities and polished over the years as an internal project. Some recent commands rely on Powershell 7 syntax, so the module is marked for PS7, although most of the commands actually should work in older Powershells.
 
-# Documentation from toolbox
+You are welcome to use and contribute. 
 
+# Installation
+To make the module auto-discoverable by Powershell, clone it into your Powershell Modules folder without changing it's name:
 
+```powershell
+$modulesFolder = $env:PSModulePath -split ";" | select -f 1
+mkdir $modulesFolder -ea Ignore
+cd $modulesFolder
+git clone https://github.com/microsoft/PSToolset
+```
 
-Tool description
-A Powershell module that enables switching between CoreXT environments, enables CoreXT automation via scheduled jobs, hosts bunch of file system, security and data processing functions to make live in console comfortable as never before. For Source Depot wrapper functions are available to improve readability of SD operations output.
+Powershell should be able to discover modue commands after that. If it doesn't you can import the module explicitly
 
-CoreXT is a sound development environment but combined with Powershell it is much more powerful. The project enables working in CoreXT environments from within Powershell. You can switch between enlistments, accomplish common tasks through the code, not manually. Oh... and you don't need to have CoreXT shortcut on your desktop anymore =)
-
-Please use 'Send-Feedback' for feedback.
-
-Installation
-Download & unpack the module.
-Make sure you have Powershell 4.0 installed (you'll see error on module import if not).
-Make sure that execution policy allows local scripts execution: (by default it doesn't; this only should be done for the first installation)
- Set-ExecutionPolicy RemoteSigned 
-Add the following line to your Powershell profile (use $PROFILE variable to get the profile location; the profile is executed for each new Powershell session):
- Import-Module <path to the module>\PSToolset.psd1
-
+```powershell
+ipmo PSToolset
+```
 
 # Documentation
 List all exported commands from the module:
