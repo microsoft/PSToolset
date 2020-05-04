@@ -8,16 +8,16 @@ function Resolve-ScriptPath
         Resolve path that is local to the script
 
     .DESCRIPTION
-        During script development it is useful to copy-paste function code and call 
-        scripts in the local folder. But for reusability in the script files it is 
-        best to combine paths with $PsScriptRoot variable that is available only 
+        During script development it is useful to copy-paste function code and call
+        scripts in the local folder. But for reusability in the script files it is
+        best to combine paths with $PsScriptRoot variable that is available only
         when called from withing a script.
 
-        This function bring good from both of the worlds together. Resolving paths 
+        This function bring good from both of the worlds together. Resolving paths
         with this function allows to:
-        - Copy-paste code from editor. Paths would be resolved relative to 
+        - Copy-paste code from editor. Paths would be resolved relative to
           current folder.
-        - Use $PsScriptRoot when script is being called. Path would be resolved 
+        - Use $PsScriptRoot when script is being called. Path would be resolved
           relative to script root folder.
 
     .PARAMETER Path
@@ -26,8 +26,8 @@ function Resolve-ScriptPath
     .EXAMPLE
         Resolve-ScriptPath "Utils.ps1"
 
-        When executed in console on copy-paste it would resolve to '.\Utils.ps1', 
-        but when executed from a script that somebody calls it would resolve to 
+        When executed in console on copy-paste it would resolve to '.\Utils.ps1',
+        but when executed from a script that somebody calls it would resolve to
         'Drive:\Path\To\Script\Folder\Utils.ps1'
     #>
 

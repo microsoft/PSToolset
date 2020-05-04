@@ -10,7 +10,7 @@ function Get-Reverse
     .EXAMPLE
         1,2,3 | Get-Reverse
 
-        Would output 3 2 1 
+        Would output 3 2 1
     #>
 
     $array = @($input)
@@ -50,7 +50,7 @@ function Get-Median
     .EXAMPLE
         5, 1, 20, 4, 4 | Get-Median
 
-        Would output 4 
+        Would output 4
     #>
 
     $sorted = @($input | foreach{ [int] $psitem } | sort)
@@ -163,7 +163,7 @@ function Test-Any( [scriptblock] $Condition = { $psitem -ne $null } )
         False since there is no element in the input collection that is not null.
 
     .NOTES
-        Can't use 'break' for this - we would exit all pipelines, 
+        Can't use 'break' for this - we would exit all pipelines,
         not just the current one
     #>
 
@@ -216,11 +216,11 @@ function Test-All( [scriptblock] $Condition = { $psitem -ne $null } )
 
     .EXAMPLE
         @() | all
-        True since there is no element in the unput collection that contradicts 
+        True since there is no element in the unput collection that contradicts
         the not-null condition.
 
     .NOTES
-        Can't use 'break' for this - we would exit all pipelines, 
+        Can't use 'break' for this - we would exit all pipelines,
         not just the current one
     #>
 
@@ -251,8 +251,8 @@ function Get-First( [scriptblock] $Condition = { $psitem -ne $null } )
         Returns first element in the piped in input that confirms to the condition
 
     .DESCRIPTION
-        Useful for functional-style code. Returns first found element that confirms 
-        to the specified condition. Nothing is returned when there are no such 
+        Useful for functional-style code. Returns first found element that confirms
+        to the specified condition. Nothing is returned when there are no such
         elements.
 
     .PARAMETER Condition
@@ -266,17 +266,17 @@ function Get-First( [scriptblock] $Condition = { $psitem -ne $null } )
 
         First check returns "23" since length of this string is greater then 1.
         Second check returns "1" since it is first not null element.
-        Third check returns nothing since Powershell would create collection with 
+        Third check returns nothing since Powershell would create collection with
         one $null element.
 
     .NOTES
         There is a way how to make it faster. See the response from Jason Shirk:
 
-        I don’t think we expose a clean way to do that.  Select-Object –First will 
-        stop a pipeline cleanly, but it does so with an exception type that we don’t 
+        I don’t think we expose a clean way to do that.  Select-Object –First will
+        stop a pipeline cleanly, but it does so with an exception type that we don’t
         make public.
 
-        Here is an example of how you could implement Find-First combining proxies 
+        Here is an example of how you could implement Find-First combining proxies
         and Select-Object – I’ll admit it’s not obvious but it is efficient:
 
         function Find-First
@@ -310,7 +310,7 @@ function Get-First( [scriptblock] $Condition = { $psitem -ne $null } )
 
     begin
     {
-        # NOTE: Can't use 'break' for this - we would exit all pipelines, 
+        # NOTE: Can't use 'break' for this - we would exit all pipelines,
         # not just the current one
         $resultKnown = $false
     }
@@ -334,8 +334,8 @@ function Get-Last( [scriptblock] $Condition = { $psitem -ne $null } )
         Returns last element in the piped in input that confirms to the condition
 
     .DESCRIPTION
-        Useful for functional-style code. Returns last found element that confirms 
-        to the specified condition. Nothing is returned when there are no such 
+        Useful for functional-style code. Returns last found element that confirms
+        to the specified condition. Nothing is returned when there are no such
         elements.
 
     .PARAMETER Condition
@@ -347,9 +347,9 @@ function Get-Last( [scriptblock] $Condition = { $psitem -ne $null } )
         "1", "2" | last
         $notExisting | last
 
-        First check returns "42" since this is last element with length greater 
+        First check returns "42" since this is last element with length greater
         then 1. Second check returns "2" since it is last not null element.
-        Third check returns nothing since Powershell would create collection 
+        Third check returns nothing since Powershell would create collection
         with one $null element.
     #>
 

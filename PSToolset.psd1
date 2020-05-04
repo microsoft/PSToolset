@@ -60,13 +60,13 @@ FunctionsToExport = @(
     # Colors
     "Write-Colorized", "Use-Highlight", "Get-Colors", "Get-Source",
     # Data
-    "ConvertTo-PsObject", "ConvertTo-Hash", 
-    "Get-Parameter", "Use-Project", "Use-Filter", 
-    "Get-Ini", "Show-Ini", "ConvertFrom-Ini", "Import-Ini", 
+    "ConvertTo-PsObject", "ConvertTo-Hash",
+    "Get-Parameter", "Use-Project", "Use-Filter",
+    "Get-Ini", "Show-Ini", "ConvertFrom-Ini", "Import-Ini",
     # Files
-    "Resolve-ScriptPath", "Get-FileEncoding", 
+    "Resolve-ScriptPath", "Get-FileEncoding",
     # Functional
-    "Test-Any", "Test-All", "Get-First", "Get-Last", "Get-Separation", 
+    "Test-Any", "Test-All", "Get-First", "Get-Last", "Get-Separation",
     "Get-Median", "Get-Reverse", "Get-UniqueUnsorted", "Get-Randomized",
     # Git
     "Initialize-GitConfig", "Open-GitExtensions",
@@ -77,9 +77,9 @@ FunctionsToExport = @(
     # Security
     "Invoke-Elevated", "Test-Interactive", "Test-Elevated", "Set-DelayLock",
     # Text
-    "Use-Parse", "Use-Default", "Format-Template", "Get-UnresolvedTemplateItem", 
+    "Use-Parse", "Use-Default", "Format-Template", "Get-UnresolvedTemplateItem",
     # Utils
-    "Use-Retries", "Set-CmdEnvironment", 
+    "Use-Retries", "Set-CmdEnvironment",
     # Xml
     "New-XName", "New-XAttribute", "New-Xmlns", "New-XComment", "New-XElement"
 )
@@ -88,7 +88,7 @@ FunctionsToExport = @(
 RequiredModules = @()
 
 # List of all files packaged with this module
-FileList = 
+FileList =
     'Colors.ps1',
     'Data.ps1',
     'Files.ps1',

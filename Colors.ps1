@@ -8,8 +8,8 @@ function Write-Colorized
         Output object to stdout with specific color
 
     .DESCRIPTION
-        Prints an object contents colorized in a specific color. Makes the output 
-        more readable on a console screen and the output can be still redirected 
+        Prints an object contents colorized in a specific color. Makes the output
+        more readable on a console screen and the output can be still redirected
         as a regular stdout.
 
     .PARAMETER Color
@@ -22,7 +22,7 @@ function Write-Colorized
     .EXAMPLE
         Write-Colorized green "=)", "test"
 
-        Prints all items in passed string array to stdout with green color 
+        Prints all items in passed string array to stdout with green color
         used in your console.
 
     .LINK
@@ -46,11 +46,11 @@ function Use-Highlight
 {
     <#
     .SYNOPSIS
-        Highlight portion of some text to make it visually 
+        Highlight portion of some text to make it visually
         easier to find something in the text
 
     .DESCRIPTION
-        Uses regex to find some some portion in the input text send via pipe. 
+        Uses regex to find some some portion in the input text send via pipe.
         Matching text is highlighted with the color specified.
 
         Without regex specified this function would highlight code examples
@@ -137,7 +137,7 @@ function Use-Highlight
 
         function Use-Markup
         {
-            foreach( $line in ($lines | Out-String | % TrimEnd) -split "`r?`n" )
+            foreach( $line in ($lines | Out-String | foreach TrimEnd) -split "`r?`n" )
             {
                 if( $line -notmatch $regex )
                 {
@@ -267,7 +267,7 @@ function Get-Source
         Print source code of a command or script in color
 
     .DESCRIPTION
-        Gets sources of a command, a script or an alias and outputs 
+        Gets sources of a command, a script or an alias and outputs
         them with syntax highlighting to the host.
 
         Alias: source
@@ -295,7 +295,7 @@ function Get-Source
             $command = Get-Command $command.Definition
         }
 
-        # Fixing shortcommings of $command.Definition - it truncates 
+        # Fixing shortcommings of $command.Definition - it truncates
         # function start for some reason
         $firstFix = $false
         $command.Definition -split "`r?`n" | foreach `

@@ -51,7 +51,7 @@ function ConvertTo-Hash( [object] $object )
 
     .DESCRIPTION
         This function takes any object, gets all not $false properties and creates
-        hash table out of the found properties. This can be useful to pass some 
+        hash table out of the found properties. This can be useful to pass some
         object through a process boundary or to remove property from an object.
 
     .PARAMETER Object
@@ -88,7 +88,7 @@ function Get-Parameter
         By default all parameter names are returned.
 
     .PARAMETER Single
-        Specify this switch if there must be only one parameter that match the 
+        Specify this switch if there must be only one parameter that match the
         pattern. If there is no single matching parameter, exception is thrown.
 
     .EXAMPLE
@@ -101,7 +101,7 @@ function Get-Parameter
         Get-Process | Get-Parameter priority
 
         List all parameters for Process object (returned from Get-Process) that
-        contain 'priority' substring in the parameter name. 
+        contain 'priority' substring in the parameter name.
         'priority' here is a regex.
 
     .LINK
@@ -154,14 +154,14 @@ function Use-Project
 
     .DESCRIPTION
         This command performs project operation from relational algebra with not
-        strict column name matching. It allows to compress data output only to 
+        strict column name matching. It allows to compress data output only to
         the columns you are interested in.
 
-        You are not forced to specify full column names to do so. You only need 
-        to supply enough info to perform unambiguous column name match. It makes 
+        You are not forced to specify full column names to do so. You only need
+        to supply enough info to perform unambiguous column name match. It makes
         working with table-like date more interactive and less time consuming.
 
-        Behavior is very similar to Select-Object with not strict (but unambiguous) 
+        Behavior is very similar to Select-Object with not strict (but unambiguous)
         properties specified.
 
         Alias: p
@@ -173,8 +173,8 @@ function Use-Project
     .EXAMPLE
         Get-ChildItem | Use-Project name len
 
-        Would output Name and Length properties of all child items. Projection 
-        doesn't require you to specify full property name if you can supply 
+        Would output Name and Length properties of all child items. Projection
+        doesn't require you to specify full property name if you can supply
         unambiguous matching regex pattern.
 
     .EXAMPLE
@@ -187,8 +187,8 @@ function Use-Project
         LastWriteTime
         LastWriteTimeUtc
 
-        Would output warning showing that 'time' parameter is ambiguous and there 
-        are 6 parameter names that match it. You must supply more specific 
+        Would output warning showing that 'time' parameter is ambiguous and there
+        are 6 parameter names that match it. You must supply more specific
         parameter name so the match would be unambiguous.
 
         [The same command via aliases]
@@ -222,31 +222,31 @@ function Use-Filter
         Regex based parameter filter for input objects
 
     .DESCRIPTION
-        Filters pipeline passing through only objects that match specific property 
-        and value pattern. Allows to quickly explore data and discover property 
+        Filters pipeline passing through only objects that match specific property
+        and value pattern. Allows to quickly explore data and discover property
         names and values.
 
         Alias: f
 
     .PARAMETER ParamaterPattern
-        Regex pattern for a parameter. Only not ambiguous matches are accepted. 
+        Regex pattern for a parameter. Only not ambiguous matches are accepted.
         All ambiguities are explained via Warnings. If parameter pattern is omitted,
         all existing property names are shown.
 
     .PARAMETER ValuePattern
         Regex pattern for a parameter value. Only not ambiguous matches are accepted.
-        All ambiguities are explained via Warnings. If value pattern is omitted, all 
+        All ambiguities are explained via Warnings. If value pattern is omitted, all
         existing property values are shown.
 
     .PARAMETER NoValue
-        Specify this switch if you want to filter properties that match property 
+        Specify this switch if you want to filter properties that match property
         pattern but have no value.
 
     .EXAMPLE
-        PS> Get-ChildItem | Use-Filter name 
+        PS> Get-ChildItem | Use-Filter name
         PS> ls | f name ps1
 
-        Exploring Get-ChildItem output. Output unique values for a property that 
+        Exploring Get-ChildItem output. Output unique values for a property that
         match 'name' pattern. Then specify ps1 files for the name.
 
     .EXAMPLE
@@ -537,12 +537,12 @@ function Show-Ini
         Print contents of INI parsed file, received from Get-Ini cmdlet
 
     .DESCRIPTION
-        Formats INI file in hash table form to make it console-readable. 
-        You can specify section filter to get only the sections of interest 
+        Formats INI file in hash table form to make it console-readable.
+        You can specify section filter to get only the sections of interest
         at the moment.
 
     .PARAMETER Ini
-        Content of a INI file in hash table form. Usually it is out from 
+        Content of a INI file in hash table form. Usually it is out from
         Get-Ini command.
 
     .PARAMETER SectionFilter

@@ -6,7 +6,7 @@ function New-XName
     <#
     .SYNOPSIS
         Create XName object with specified name
-    
+
     .EXAMPLE
         xname some_xname
     #>
@@ -25,7 +25,7 @@ function New-XAttribute
     <#
     .SYNOPSIS
         Create XAttribute object with specified name and value
-    
+
     .EXAMPLE
         ls | xelem "Files" `
             {xattr Name $psitem.Name},
@@ -47,7 +47,7 @@ function New-Xmlns
     <#
     .SYNOPSIS
         Create Xmlns object with specified namespace and value
-    
+
     .EXAMPLE
         "Some", "Collection" | xelem "Element" `
             {xmlns xsd "http://www.w3.org/2001/XMLSchema"},
@@ -70,7 +70,7 @@ function New-XComment
     <#
     .SYNOPSIS
         Create XComment object with specified value
-    
+
     .EXAMPLE
         ls | xelem "File" `
             {xcomm " Length: $($psitem.Length) "},
@@ -87,12 +87,12 @@ function New-XComment
 }
 
 filter New-XElement
-{   
+{
     <#
     .SYNOPSIS
         Create XElement object and attach specified via
         script blocks other XObjects in a hierarchcal form
-    
+
     .EXAMPLE
         $psitem | xelem "Acls" `
             {xmlns xsd "http://www.w3.org/2001/XMLSchema"},

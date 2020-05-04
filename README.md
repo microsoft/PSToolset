@@ -1,7 +1,7 @@
 # The purpose and state of the repository
 This module represnts a set of tools for Powershell that I find useful to have available in every Powershell console. It was started as a helper project for some daily work activities and polished over the years as an internal project. Some recent commands rely on Powershell 7 syntax, so the module is marked for PS7, although most of the commands actually should work in older Powershells.
 
-You are welcome to use and contribute. 
+You are welcome to use and contribute.
 
 # Installation
 To make the module auto-discoverable by Powershell, clone it into your Powershell Modules folder without changing it's name:
@@ -23,7 +23,7 @@ ipmo PSToolset
 List all exported commands from the module:
 
 ```powershell
-Get-Command -Module PSToolset 
+Get-Command -Module PSToolset
 ```
 
 Get detailed help for a particular function:
@@ -33,7 +33,7 @@ man Set-CmdEnvironment -Detailed
 
 Get examples for a particular function:
 ```powershell
-man Use-Highlight -Examples 
+man Use-Highlight -Examples
 ```
 
 See implementation details in color:
@@ -130,7 +130,7 @@ New-Xmlns | xmlns | Create Xmlns object with specified namespace and value
 New-XName | xname | Create XName object with specified name
 
 
-# How to regenerate table of exported commands 
+# How to regenerate table of exported commands
 ``` powershell
 
 ipmo PSToolset
@@ -156,7 +156,7 @@ foreach( $function in $functions )
 foreach( $alias in $aliases )
 {
     $function = get-alias $alias | % ResolvedCommand | % Name
-    $map.$function.Alias = $alias 
+    $map.$function.Alias = $alias
 }
 
 $parsed = $map.Keys | %{ [PsCustomObject] $map.$psitem }

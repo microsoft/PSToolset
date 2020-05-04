@@ -5,7 +5,7 @@ function Initialize-GitConfig
 {
     <#
     .SYNOPSIS
-        Configure git before the first use; assigns name and 
+        Configure git before the first use; assigns name and
         email for the current user and sets up some useful defaults
     #>
 
@@ -71,7 +71,7 @@ function Open-GitExtensions
 {
     <#
     .SYNOPSIS
-        Open GitExtensions GUI frontend, by default browse window 
+        Open GitExtensions GUI frontend, by default browse window
         in the current folder would be opened
 
     .PARAMETER Args

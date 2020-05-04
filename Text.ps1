@@ -8,29 +8,29 @@ filter Use-Parse
         Parse incoming text to find relevant pieces in it
 
     .DESCRIPTION
-        Parses incoming stream of strings and matches each string to a regex 
-        pattern. The regex pattern must define regex groups that are used to 
-        capture extracted text. The extracted text is stored in output object 
-        that is constructed dynamically. Each regex group match would be stored 
-        in that object as string property with name defined by $args unbound 
-        parameters. If no unbound parameter is specified, the first group match 
+        Parses incoming stream of strings and matches each string to a regex
+        pattern. The regex pattern must define regex groups that are used to
+        capture extracted text. The extracted text is stored in output object
+        that is constructed dynamically. Each regex group match would be stored
+        in that object as string property with name defined by $args unbound
+        parameters. If no unbound parameter is specified, the first group match
         is returned.
 
     .PARAMETER Pattern
-        Regex used in matching. Regex groups are used to define significant 
+        Regex used in matching. Regex groups are used to define significant
         pieces of text that are extracted from incoming stream.
 
     .PARAMETER Args
-        The $args array (the unbound command parameters) contain names of 
-        properties that would be used to capture each regex group match. 
-        Each property would be populated with corresponding regex group match 
+        The $args array (the unbound command parameters) contain names of
+        properties that would be used to capture each regex group match.
+        Each property would be populated with corresponding regex group match
         value in the order of their definition.
 
-        If no args are passed, the first regex group match value is returned 
+        If no args are passed, the first regex group match value is returned
         as result.
 
     .PARAMETER Enforce
-        Specify this flag if all passed object must match the regex pattern. 
+        Specify this flag if all passed object must match the regex pattern.
         If mismatch is found, an exception is thrown.
         By default: not set, all not matching elements would be silently skipped.
 
@@ -128,21 +128,21 @@ filter Format-Template( [string] $Template = $(throw "Template is mandatory") )
         Render text template
 
     .DESCRIPTION
-        This function is used to render text from templates and variables that 
-        store template-specific information. When {property_name} text is 
+        This function is used to render text from templates and variables that
+        store template-specific information. When {property_name} text is
         encountered in the template, the function would try to resolve it via:
         - property of the piped in variables with the same name 'property_name'.
         - Powershell variable with the same name 'property_name'. Out-String would
           be used in that case.
 
-        If multiple objects are piped in, the rendered text would be rendered for 
+        If multiple objects are piped in, the rendered text would be rendered for
         each object separately.
 
         That allows to conveniently generate text from data.
 
     .PARAMETER Template
-        Template string to be used. Any occurrence of {property_name} would be 
-        tried to be resolved. If the property can't be resolved, it is left as 
+        Template string to be used. Any occurrence of {property_name} would be
+        tried to be resolved. If the property can't be resolved, it is left as
         it is in the template.
 
     .EXAMPLE
@@ -153,8 +153,8 @@ filter Format-Template( [string] $Template = $(throw "Template is mandatory") )
                 </Pod>
         '@
 
-        Template used here would use both properties from $edge collection objects 
-        (PodName,RackFloor, PodType,City that are specific to a concrete Edge) and 
+        Template used here would use both properties from $edge collection objects
+        (PodName,RackFloor, PodType,City that are specific to a concrete Edge) and
         from already rendered text (PowerRendered, ServerRendered).
 
     .LINK
@@ -198,8 +198,8 @@ function Get-UnresolvedTemplateItem( [string] $Template = $(throw "Template is m
         Find template items that were not resolved yet
 
     .PARAMETER Template
-        Template string to be used. Any occurrence of {property_name} would be 
-        tried to be resolved. If the property can't be resolved, it is left as 
+        Template string to be used. Any occurrence of {property_name} would be
+        tried to be resolved. If the property can't be resolved, it is left as
         it is in the template.
 
     .EXAMPLE

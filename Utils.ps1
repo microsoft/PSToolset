@@ -8,8 +8,8 @@ function Use-Retries
         Retry execution of a script that throws an exception
 
     .DESCRIPTION
-        Retries to execute the 'Action' script. If any exception is thrown, 
-        next sleep interval is taken from 'RetryIntervalsInMinutes' array. 
+        Retries to execute the 'Action' script. If any exception is thrown,
+        next sleep interval is taken from 'RetryIntervalsInMinutes' array.
         If all retries fail an error is thrown.
 
         -Verbose would print retry log to verbose stream
@@ -19,14 +19,14 @@ function Use-Retries
 
     .PARAMETER RetryIntervalsInMinutes
         Array of retry intervals used between retries.
-        Could be empty (the case of a single execution of the action script 
+        Could be empty (the case of a single execution of the action script
         without any retries) Could not be null.
 
     .EXAMPLE
         Use-Retries $sendMail (0.1, 1, 5, 10, 30)
 
-        Retry $sendMail script block. In case of any exception happened during 
-        the script block execution perform a retry. Retries should be done with 
+        Retry $sendMail script block. In case of any exception happened during
+        the script block execution perform a retry. Retries should be done with
         gradually increasing retry time interval. If all retries failed then
         error would be thrown.
     #>
@@ -71,8 +71,8 @@ function Set-CmdEnvironment
         Call .bat or .cmd file and preserve all environment variables set by it
 
     .DESCRIPTION
-        Calls .bat or .cmd file, asynchronously prints all stdout and stderr output 
-        from it and saves all environment variables that the file sets into the 
+        Calls .bat or .cmd file, asynchronously prints all stdout and stderr output
+        from it and saves all environment variables that the file sets into the
         current Powershell session.
         - Stderr is outputted into stdout.
         - Output coloring is not preserved.
@@ -98,7 +98,7 @@ function Set-CmdEnvironment
     .EXAMPLE
         Set-CmdEnvironment set-env-variables.bat
 
-        Will execute 'set-env-variables.bat' script, dump all environment variables 
+        Will execute 'set-env-variables.bat' script, dump all environment variables
         and transfer them into Powershell host. All original output will be shown as
         well.
     #>
@@ -111,11 +111,11 @@ function Set-CmdEnvironment
         [string] $Parameters,
         [switch] $InheritPSModulePath
     )
-    
+
     # Showing progress
     $info = "Calling $script $parameters"
     $lastProgressOutput = "Initialization"
-    Write-Progress $info $lastProgressOutput    
+    Write-Progress $info $lastProgressOutput
 
     # Helper objects
     $preserved, $GLOBAL:shared = $GLOBAL:shared, @{
@@ -144,9 +144,9 @@ function Set-CmdEnvironment
         {
             $process.StartInfo.EnvironmentVariables.Remove("PSModulePath") | Out-Null
         }
-     
-        $value = 
-            [Environment]::GetEnvironmentVariable("PSModulePath", "Machine") + ";" + 
+
+        $value =
+            [Environment]::GetEnvironmentVariable("PSModulePath", "Machine") + ";" +
             [Environment]::GetEnvironmentVariable("PSModulePath", "User")
         $process.StartInfo.EnvironmentVariables.Add("PSModulePath", $value) | Out-Null
     }
@@ -186,13 +186,13 @@ function Set-CmdEnvironment
         while( -not $process.HasExited )
         {
             $newOutput = $false
-            
+
             while( $lineQueue.TryDequeue([ref] $line) )
-            { 
+            {
                 $line
                 $lastProgressOutput = [string]::IsNullOrWhiteSpace($line) ? "..." : $line
                 Write-Progress $info $lastProgressOutput
-             
+
                 $newOutput = $true
                 $stopwatch.Restart()
             }
@@ -217,10 +217,10 @@ function Set-CmdEnvironment
     }
 
     # Draining line queue
-    while( $lineQueue.TryDequeue([ref] $line) ) 
+    while( $lineQueue.TryDequeue([ref] $line) )
     {
         Write-Progress $info $lastProgressOutput
-        $line 
+        $line
     }
 
     Write-Progress $info "Done" -Completed

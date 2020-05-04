@@ -12,8 +12,8 @@ function Invoke-Elevated
         user is prompted via UAC, new elevated process is created, input and output
         objects are transfered between processes.
 
-        Beware that not all objects are deserialized well by internally used 
-        Import-CliXml. If output received is unreadable try using | Out-String 
+        Beware that not all objects are deserialized well by internally used
+        Import-CliXml. If output received is unreadable try using | Out-String
         at the end of the script.
 
     .PARAMETER Scriptblock
@@ -29,12 +29,12 @@ function Invoke-Elevated
         PS> $state = construct name cred
         PS> Invoke-Elevated { param( $state ) $state; Test-Elevated } $state
 
-        This sample shows how to call script in elevated session and pass a 
+        This sample shows how to call script in elevated session and pass a
         complex argument into it. Test-Elevated would return true here.
 
     .NOTES
         For text output it is possible to redirect it to the main program in async
-        way. But that would not work for Powershell objects.    
+        way. But that would not work for Powershell objects.
     #>
 
     param
@@ -96,8 +96,8 @@ function Test-Interactive
         Determine if the current Powershell session is interactive
 
     .DESCRIPTION
-        Interactive shell should have human being observing it =) You can ask 
-        something him/her via Read-Host command. If there is no human being, 
+        Interactive shell should have human being observing it =) You can ask
+        something him/her via Read-Host command. If there is no human being,
         no reason to ask, right?
 
     .EXAMPLE
@@ -119,19 +119,19 @@ function Test-Elevated
         Test if current Powershell session is elevated
 
     .DESCRIPTION
-        Several commands need to be executed in an elevated session to 
-        have administrator rights. This function allows safely and robustly 
+        Several commands need to be executed in an elevated session to
+        have administrator rights. This function allows safely and robustly
         detect if current session is elevated.
 
     .EXAMPLE
         Test-Elevated
 
-        Would return true for an elevated Powershell session with administrator 
+        Would return true for an elevated Powershell session with administrator
         rights.
         Would return false for a regular Powershell session.
         Would return true for a remote Powershell session that is started under
-        user that is a local administrator (by default in Powershell 3.0/Windows 
-        there is no way of running not elevated remote session if the user in in 
+        user that is a local administrator (by default in Powershell 3.0/Windows
+        there is no way of running not elevated remote session if the user in in
         the administrator group).
     #>
 
@@ -150,7 +150,7 @@ function Set-DelayLock
 
     param
     (
-        [Parameter(Mandatory = $true)] [timespan] $Timeout 
+        [Parameter(Mandatory = $true)] [timespan] $Timeout
     )
 
 

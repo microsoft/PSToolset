@@ -9,7 +9,7 @@ function Start-JupyterNotebook
         Reuse existing notebook already running if possible
 
     .PARAMETER Force
-        Don't reuse anything and don't use defaults. 
+        Don't reuse anything and don't use defaults.
         Just open a new notebook in the current folder.
 
     .EXAMPLE
@@ -35,9 +35,9 @@ function Start-JupyterNotebook
             -ArgumentList '-Command "jupyter notebook"' `
             -WorkingDirectory $folder `
             -WindowStyle Hidden `
-            -PassThru  
-        
-        $job = Start-Job -Name $cleanupJobName {
+            -PassThru
+
+            $job = Start-Job -Name $cleanupJobName {
             Start-Sleep -Seconds 60
             $ps | kill
         }
@@ -48,7 +48,7 @@ function Start-JupyterNotebook
     {
         "Open new jupyter notebook in current folder $pwd"
         Open-Notebook
-        return 
+        return
     }
 
     # Trying to reuse opened notebooks if possible
@@ -77,9 +77,9 @@ function Stop-JupyterNotebook
     <#
     .SYNOPSIS
         Stop all Jupyter Notebooks running
-    #>    
-    
-    jupyter notebook list | 
-        Use-Parse "localhost:(\d+)" | 
+    #>
+
+    jupyter notebook list |
+        Use-Parse "localhost:(\d+)" |
         foreach{ jupyter notebook stop $psitem }
 }
