@@ -396,6 +396,6 @@ function Get-Separation( [scriptblock] $condition )
         that are bigger than 10kb and smaller ones.
     #>
 
-    $separated = $input | group $condition -AsHashTable
+    $separated = $input | Group-Object $condition -AsHashTable
     @($separated[$true]), @($separated[$false])
 }

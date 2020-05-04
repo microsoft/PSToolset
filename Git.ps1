@@ -39,9 +39,9 @@ function Initialize-GitConfig
         git config --global user.name $name
 
         $email = Read-Host "User email"
-        git config --global user.email "$ENV:USERNAME@microsoft.com"
+        git config --global user.email $email
     }
-    "Git user name and email are configured"
+    Write-Output "Git user name and email are configured"
 
     git config --global --replace-all color.grep auto
     git config --global --replace-all color.grep.filename "green"
@@ -55,7 +55,7 @@ function Initialize-GitConfig
     git config --global --replace-all color.diff.frag "cyan"
     git config --global --replace-all color.diff.func "cyan bold"
     git config --global --replace-all color.diff.commit "yellow bold"
-    "Git defaults are configured"
+    Write-Output "Git defaults are configured"
 
     # Aliases for the most used commands
     git config --global alias.co checkout
@@ -64,7 +64,7 @@ function Initialize-GitConfig
     git config --global alias.br branch
     git config --global alias.lg "log --graph --pretty=format:'%C(reset)%C(yellow)%h%C(reset) -%C(bold yellow)%d%C(reset) %s %C(green)(%cr) %C(cyan)<%an>%C(reset)' --abbrev-commit --date=relative -n 10"
     git config --global alias.gr "grep --break --heading --line-number -iIE"
-    "Git aliases are configured"
+    Write-Output "Git aliases are configured"
 }
 
 function Open-GitExtensions
@@ -84,7 +84,7 @@ function Open-GitExtensions
 
     #>
 
-    if( -not (gcm GitExtensions.exe -ea Ignore) )
+    if( -not (Get-Command GitExtensions.exe -ea Ignore) )
     {
         throw "GitExtensions.exe must be discoverable via PATH environment variable"
     }
