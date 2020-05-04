@@ -18,6 +18,9 @@ function Start-JupyterNotebook
         Tries to reopen a currently opened jupyter notebook.
     #>
 
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSUseShouldProcessForStateChangingFunctions', '',
+        Justification='Intended to be this way')]
     param
     (
         [switch] $Force
@@ -37,10 +40,10 @@ function Start-JupyterNotebook
             -WindowStyle Hidden `
             -PassThru
 
-            $job = Start-Job -Name $cleanupJobName {
+        Start-Job -Name $cleanupJobName {
             Start-Sleep -Seconds 60
-            $ps | kill
-        }
+            $ps | Stop-Process
+        } | Out-Null
     }
 
     # When need to open new notebook in current folder
@@ -78,6 +81,11 @@ function Stop-JupyterNotebook
     .SYNOPSIS
         Stop all Jupyter Notebooks running
     #>
+
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSUseShouldProcessForStateChangingFunctions', '',
+        Justification='Intended to be this way')]
+    param()
 
     jupyter notebook list |
         Use-Parse "localhost:(\d+)" |

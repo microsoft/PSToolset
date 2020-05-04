@@ -1,6 +1,11 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+    "PSAvoidGlobalVars", "",
+    Justification="We need global PSToolsetAutoCompleteOptions here")]
+param()
+
 # Test if we did that override already, PSToolset can be
 # loaded multiple times to one Powershell session
 if( $GLOBAL:PSToolsetAutoCompleteOptions )

@@ -11,6 +11,9 @@ function New-XName
         xname some_xname
     #>
 
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSUseShouldProcessForStateChangingFunctions', '',
+        Justification='Intended to be this way')]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -32,6 +35,9 @@ function New-XAttribute
             {xattr Length $psitem.Length},
     #>
 
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSUseShouldProcessForStateChangingFunctions', '',
+        Justification='Intended to be this way')]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -54,6 +60,9 @@ function New-Xmlns
             {xmlns xsi "http://www.w3.org/2001/XMLSchema-instance"}
     #>
 
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSUseShouldProcessForStateChangingFunctions', '',
+        Justification='Intended to be this way')]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -77,6 +86,9 @@ function New-XComment
             {xcomm " BaseName: $($psitem.BaseName) "}
     #>
 
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSUseShouldProcessForStateChangingFunctions', '',
+        Justification='Intended to be this way')]
     param
     (
         [Parameter(Mandatory=$true)]
@@ -115,6 +127,9 @@ filter New-XElement
             }
     #>
 
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSUseShouldProcessForStateChangingFunctions', '',
+        Justification='Intended to be this way')]
     param
     (
         [string] $Name,

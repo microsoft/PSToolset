@@ -179,7 +179,7 @@ filter Format-Template( [string] $Template = $(throw "Template is mandatory") )
             {
                 Get-Variable $name -ValueOnly -ea Ignore
             }
-            $value = $value | Out-String | % TrimEnd
+            $value = $value | Out-String | foreach TrimEnd
         }
         if( -not $value )
         {
