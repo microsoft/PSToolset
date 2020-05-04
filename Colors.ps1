@@ -46,8 +46,8 @@ function Use-Highlight
 {
     <#
     .SYNOPSIS
-        Highlight portion of some text to make it easier
-        to find something in the text
+        Highlight portion of some text to make it visually 
+        easier to find something in the text
 
     .DESCRIPTION
         Uses regex to find some some portion in the input text send via pipe. 
@@ -191,7 +191,7 @@ function Get-Colors
 {
     <#
     .SYNOPSIS
-        Print all console host colors to the console using coloring
+        Print all console host colors to the console in color
 
     .DESCRIPTION
         Possible color names taken from '[ConsoleColor] | gm -Static' are:

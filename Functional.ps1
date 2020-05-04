@@ -135,7 +135,7 @@ function Test-Any( [scriptblock] $Condition = { $psitem -ne $null } )
 {
     <#
     .SYNOPSIS
-        Test if any element in the piped-in input confirms to the condition
+        Test if any element in the piped in input confirms to the condition
 
     .DESCRIPTION
         Useful for functional-style code. Returns $true if there is an element
@@ -191,11 +191,11 @@ function Test-All( [scriptblock] $Condition = { $psitem -ne $null } )
 {
     <#
     .SYNOPSIS
-        Test if all elements in the piped-in input confirm to the condition
+        Test if all elements in the piped in input confirm to the condition
 
     .DESCRIPTION
         Useful for functional-style code. Returns $true if all elements in the
-        piped-in input confirm to the specified condition. $false if there is
+        piped in input confirm to the specified condition. $false if there is
         at least one element that doesn't confirm.
 
     .PARAMETER Condition
@@ -248,7 +248,7 @@ function Get-First( [scriptblock] $Condition = { $psitem -ne $null } )
 {
     <#
     .SYNOPSIS
-        Returns first element in the piped-in input that confirms to the condition
+        Returns first element in the piped in input that confirms to the condition
 
     .DESCRIPTION
         Useful for functional-style code. Returns first found element that confirms 
@@ -331,7 +331,7 @@ function Get-Last( [scriptblock] $Condition = { $psitem -ne $null } )
 {
     <#
     .SYNOPSIS
-        Returns last element in the piped-in input that confirms to the condition
+        Returns last element in the piped in input that confirms to the condition
 
     .DESCRIPTION
         Useful for functional-style code. Returns last found element that confirms 

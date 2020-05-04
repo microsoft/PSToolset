@@ -5,7 +5,7 @@ function ConvertTo-PsObject
 {
     <#
     .SYNOPSIS
-        Convert variables to PsObject
+        Convert a set of variables into a PsObject
 
     .DESCRIPTION
         Constructs new PsObject from the available variables.
@@ -47,7 +47,7 @@ function ConvertTo-Hash( [object] $object )
 {
     <#
     .SYNOPSIS
-        Convert any object into a hash table
+        Convert an object into a hash table
 
     .DESCRIPTION
         This function takes any object, gets all not $false properties and creates
@@ -219,7 +219,7 @@ function Use-Filter
 {
     <#
     .SYNOPSIS
-        Not strict parameter filter for input objects
+        Regex based parameter filter for input objects
 
     .DESCRIPTION
         Filters pipeline passing through only objects that match specific property 
@@ -292,7 +292,7 @@ function Get-Ini
 {
     <#
     .SYNOPSIS
-        Parse INI file as a hash table
+        Parse INI file as a hashtable object
 
     .DESCRIPTION
         Features:

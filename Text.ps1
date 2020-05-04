@@ -89,7 +89,7 @@ filter Use-Parse
 function Use-Default
 {
     <#
-    .SYNOPIS
+    .SYNOPSIS
         Define default value if input is null, false or missing
 
     .EXAMPLE

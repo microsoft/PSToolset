@@ -39,11 +39,11 @@ AliasesToExport = @(
     'default',
     'f', # filter
     'first',
+    'gite',
     'hl', # highlight
     'jn', # jyputer notebook
     'last',
     'lock',
-    'lookup',
     'p', # project
     'parse',
     'separate',
@@ -64,7 +64,7 @@ FunctionsToExport = @(
     "Get-Parameter", "Use-Project", "Use-Filter", 
     "Get-Ini", "Show-Ini", "ConvertFrom-Ini", "Import-Ini", 
     # Files
-    "Resolve-ScriptPath", "Get-Md5", "Get-FileEncoding", 
+    "Resolve-ScriptPath", "Get-FileEncoding", 
     # Functional
     "Test-Any", "Test-All", "Get-First", "Get-Last", "Get-Separation", 
     "Get-Median", "Get-Reverse", "Get-UniqueUnsorted", "Get-Randomized",

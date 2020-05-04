@@ -6,7 +6,7 @@ function Initialize-GitConfig
     <#
     .SYNOPSIS
         Configure git before the first use; assigns name and 
-        email for the current user and sets up some defaults
+        email for the current user and sets up some useful defaults
     #>
 
     [CmdletBinding()]
@@ -71,10 +71,23 @@ function Open-GitExtensions
 {
     <#
     .SYNOPSIS
-        Open GitExtensions GUI frontend; you can specify specific window to 
-        open as an argument, by default browse window in the current folder
-        would be opened
+        Open GitExtensions GUI frontend, by default browse window 
+        in the current folder would be opened
+
+    .PARAMETER Args
+        Any arguments that should be passed to the git extensions
+
+    .EXAMPLE
+        gite commit
+
+        Open git extension comit dialog for the repo in the current folder
+
     #>
+
+    if( -not (gcm GitExtensions.exe -ea Ignore) )
+    {
+        throw "GitExtensions.exe must be discoverable via PATH environment variable"
+    }
 
     $param = $args
     if( -not $param ) { $param = @("browse") }

@@ -49,38 +49,6 @@ function Resolve-ScriptPath
     Join-Path $location $path
 }
 
-function Get-Md5
-{
-    <#
-    .SYNOPSIS
-        Get MD5 hash for a file as a base 64 string
-
-    .PARAMETER File
-        Path to the file to be hashed.
-
-    .EXAMPLE
-        Get-Md5 CoreXT.ps1
-
-        Gets MD5 hash as base64 string for file CoreXT.ps1.
-    #>
-
-    param
-    (
-        [Parameter(Mandatory = $true)]
-        [string] $File
-    )
-
-    if( -not (Test-Path $file) ) { return "0" }
-    $text = Get-Content $file
-    if( $text -eq $null ) { return "0" }
-
-    $md5 = [Security.Cryptography.MD5]::Create()
-    $utf = New-Object Text.UTF8Encoding
-    $bytes = $utf.GetBytes($text)
-    $hash = $md5.ComputeHash($bytes)
-    [Convert]::ToBase64String($hash)
-}
-
 function Get-FileEncoding
 {
     <#
