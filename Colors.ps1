@@ -42,7 +42,7 @@ function Write-Colorized
     [Console]::ForegroundColor = $previous
 }
 
-function Use-Highlight
+function Show-Highlight
 {
     <#
     .SYNOPSIS
@@ -79,14 +79,14 @@ function Use-Highlight
         If user specifies $regex or color explicitly they take precedence.
 
     .EXAMPLE
-        "test tee, please", "tee" | Use-Highlight e+ red
+        "test tee, please", "tee" | Show-Highlight e+ red
 
         Highlights all 'e' chars in the input with red.
 
     .EXAMPLE
         man hl -Examples | hl
 
-        Highlights code snippets in Use-Highlight examples help.
+        Highlights code snippets in Show-Highlight examples help.
 
     .EXAMPLE
         tracert bing.com | hl "[a-f0-9]+:[a-f0-9:]+" green -int

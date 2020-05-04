@@ -58,7 +58,7 @@ AliasesToExport = @(
 # Functions to export from this module
 FunctionsToExport = @(
     # Colors
-    "Write-Colorized", "Use-Highlight", "Get-Colors", "Get-Source",
+    "Write-Colorized", "Show-Highlight", "Get-Colors", "Get-Source",
     # Data
     "ConvertTo-PsObject", "ConvertTo-Hash",
     "Get-Parameter", "Use-Project", "Use-Filter",

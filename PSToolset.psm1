@@ -32,7 +32,7 @@ Set-Alias default   Use-Default
 Set-Alias first     Get-First
 Set-Alias f         Use-Filter
 Set-Alias gite      Open-GitExtensions
-Set-Alias hl        Use-Highlight
+Set-Alias hl        Show-Highlight
 Set-Alias jn        Start-JupyterNotebook
 Set-Alias last      Get-Last
 Set-Alias lock      Set-DelayLock

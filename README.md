@@ -33,7 +33,7 @@ man Set-CmdEnvironment -Detailed
 
 Get examples for a particular function:
 ```powershell
-man Use-Highlight -Examples
+man Show-Highlight -Examples
 ```
 
 See implementation details in color:
@@ -47,7 +47,7 @@ Name | Alias | Description
 -----|-------|-------------
 Get-Colors |  | Print all console host colors to the console in color
 Get-Source | source | Print source code of a command or script in color
-Use-Highlight | hl | Highlight portion of some text to make it visually easier to find something in the text
+Show-Highlight | hl | Highlight portion of some text to make it visually easier to find something in the text
 Write-Colorized |  | Output object to stdout with specific color
 
 ## Data
