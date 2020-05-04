@@ -26,6 +26,12 @@ function Start-JupyterNotebook
         [switch] $Force
     )
 
+    # Test if jupyter is installed
+    if( -not (Get-Command jupyter.exe -ea Ignore) )
+    {
+        throw "jupyter.exe must be discoverable via PATH environment variable, you can install it via Anaconda"
+    }
+
     # Cleanup cleanup jobs =)
     $cleanupJobName = "Start-JupyterNotebook cleanup"
     Get-Job $cleanupJobName -ea Ignore | where State -eq Completed | Remove-Job
@@ -87,6 +93,13 @@ function Stop-JupyterNotebook
         Justification='Intended to be this way')]
     param()
 
+    # Test if jupyter is installed
+    if( -not (Get-Command jupyter.exe -ea Ignore) )
+    {
+        throw "jupyter.exe must be discoverable via PATH environment variable, you can install it via Anaconda"
+    }
+
+    # Stop all opened notebooks, even crashed ones
     jupyter notebook list |
         Use-Parse "localhost:(\d+)" |
         foreach{ jupyter notebook stop $psitem }
