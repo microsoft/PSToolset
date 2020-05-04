@@ -1,5 +1,5 @@
 # The purpose and state of the repository
-This module represents a set of tools for Powershell that I find useful to have available in every Powershell console. It was started as a helper project for some daily work activities and polished over the years as an internal project. Some recent commands rely on Powershell 7 syntax, so the module is marked for PS7, although most of the commands actually should work in older Powershell versions.
+This module represents a set of tools for Powershell that I find useful to have available in every Powershell console. It was started as a helper project for some daily work activities and polished over the years as an internal project. Some recent commands rely on Powershell 7 syntax, so the module is marked for Powershell 7, although most of the commands actually should work in older Powershell versions.
 
 You are welcome to use and contribute.
 
@@ -40,6 +40,8 @@ See implementation details in color:
 ```powershell
 source construct
 ```
+
+![Source output](media/source-output.png)
 
 # Commands
 ## Colors
