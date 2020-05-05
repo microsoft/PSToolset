@@ -33,5 +33,11 @@
         "xcomm",
         "xelem",
         "xname"
-    ]
+    ],
+    "powershell.codeFormatting.openBraceOnSameLine": false,
+    "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
+    "powershell.codeFormatting.useCorrectCasing": true,
+    "powershell.codeFormatting.whitespaceBeforeOpenBrace": false,
+    "powershell.codeFormatting.whitespaceBeforeOpenParen": false,
+    "powershell.codeFormatting.whitespaceInsideBrace": false
 }

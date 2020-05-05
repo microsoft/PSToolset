@@ -17,6 +17,6 @@ or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any addi
 # Technical Guidance
 This module doesn't require a build, all the code is in Powershell. While contributing please use the same codding style as used throughout the project. It may not be your default codding style, but for the project consistency it would be better to use the same style everywhere.
 
-I personally work with VS Code with Powershell code nowadays. But any editor would do.
+I personally work with VS Code with Powershell code nowadays. Any editor would do, but VS Code with Powershell extension installed would ensure you can reformat the code with the same code style convention used. Hit Shift+Alt+F to format the currently opened document.
 
 All exported commands need to provide documentation with an example.
