@@ -13,10 +13,10 @@ function New-XName
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         'PSUseShouldProcessForStateChangingFunctions', '',
-        Justification='Intended to be this way')]
+        Justification = 'Intended to be this way')]
     param
     (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string] $Name
     )
 
@@ -37,10 +37,10 @@ function New-XAttribute
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         'PSUseShouldProcessForStateChangingFunctions', '',
-        Justification='Intended to be this way')]
+        Justification = 'Intended to be this way')]
     param
     (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string] $Name,
         [string] $Value
     )
@@ -62,12 +62,12 @@ function New-Xmlns
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         'PSUseShouldProcessForStateChangingFunctions', '',
-        Justification='Intended to be this way')]
+        Justification = 'Intended to be this way')]
     param
     (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string] $Namespace,
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string] $Value
     )
 
@@ -88,10 +88,10 @@ function New-XComment
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         'PSUseShouldProcessForStateChangingFunctions', '',
-        Justification='Intended to be this way')]
+        Justification = 'Intended to be this way')]
     param
     (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string] $Value
     )
 
@@ -129,7 +129,7 @@ filter New-XElement
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         'PSUseShouldProcessForStateChangingFunctions', '',
-        Justification='Intended to be this way')]
+        Justification = 'Intended to be this way')]
     param
     (
         [string] $Name,

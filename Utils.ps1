@@ -3,7 +3,7 @@
 
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
     "PSAvoidGlobalVars", "",
-    Justification="We need global PSToolsetLastRetryError here")]
+    Justification = "We need global PSToolsetLastRetryError here")]
 param()
 
 function Use-Retries
@@ -110,7 +110,7 @@ function Set-CmdEnvironment
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         'PSUseShouldProcessForStateChangingFunctions', '',
-        Justification='Intended to be this way')]
+        Justification = 'Intended to be this way')]
     param
     (
         [Parameter( Mandatory = $true )]
@@ -135,15 +135,17 @@ function Set-CmdEnvironment
     $lineQueue = $GLOBAL:shared.lineQueue
 
     # Initialize process object
-    $process = [Diagnostics.Process] @{ StartInfo = [Diagnostics.ProcessStartInfo] @{
-        FileName = (Get-Command 'cmd').Definition
-        Arguments = "/c `"$script`" $parameters & echo $($GLOBAL:shared.marker) & set"
-        WorkingDirectory = (Get-Location).Path
-        UseShellExecute = $false
-        RedirectStandardError = $true
-        RedirectStandardOutput = $true
-        RedirectStandardInput = $false
-    } }
+    $process = [Diagnostics.Process] @{
+        StartInfo = [Diagnostics.ProcessStartInfo] @{
+            FileName = (Get-Command 'cmd').Definition
+            Arguments = "/c `"$script`" $parameters & echo $($GLOBAL:shared.marker) & set"
+            WorkingDirectory = (Get-Location).Path
+            UseShellExecute = $false
+            RedirectStandardError = $true
+            RedirectStandardOutput = $true
+            RedirectStandardInput = $false
+        }
+    }
 
     # Check if we need to reinitialize PSModulePath
     if( -not $inheritPSModulePath )
@@ -153,9 +155,10 @@ function Set-CmdEnvironment
             $process.StartInfo.EnvironmentVariables.Remove("PSModulePath") | Out-Null
         }
 
-        $value =
+        $value = @(
             [Environment]::GetEnvironmentVariable("PSModulePath", "Machine") + ";" +
             [Environment]::GetEnvironmentVariable("PSModulePath", "User")
+        )
         $process.StartInfo.EnvironmentVariables.Add("PSModulePath", $value) | Out-Null
     }
 

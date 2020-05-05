@@ -77,7 +77,7 @@ function Get-FileEncoding
 
     param
     (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string] $Path
     )
 
@@ -101,12 +101,13 @@ function Get-FileEncoding
         return $true
     }
 
-    $knownEncodings =
+    $knownEncodings = @(
         [Text.Encoding]::BigEndianUnicode,
         [Text.Encoding]::UTF32,
         [Text.Encoding]::UTF8,
         [Text.Encoding]::Unicode, # that's UTF16
         [Text.Encoding]::Default  # must come last
+    )
 
     [byte[]] $byte = Get-Content -Encoding byte -ReadCount 4 -TotalCount 4 -Path $Path
 

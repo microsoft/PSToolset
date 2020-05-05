@@ -39,5 +39,6 @@
     "powershell.codeFormatting.useCorrectCasing": true,
     "powershell.codeFormatting.whitespaceBeforeOpenBrace": false,
     "powershell.codeFormatting.whitespaceBeforeOpenParen": false,
-    "powershell.codeFormatting.whitespaceInsideBrace": false
+    "powershell.codeFormatting.whitespaceInsideBrace": false,
+    "powershell.codeFormatting.alignPropertyValuePairs": false
 }

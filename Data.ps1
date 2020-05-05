@@ -125,12 +125,13 @@ function Get-Parameter
         }
 
         # Get properties that match the pattern
-        $result = @($accumulator |
-            foreach{ $psitem.PsObject.Members } |
-            where Name -match $pattern |
-            where MemberType -match "Property" |
-            foreach Name |
-            Get-UniqueUnsorted)
+        $result = @(
+            $accumulator |
+                foreach{ $psitem.PsObject.Members } |
+                where Name -match $pattern |
+                where MemberType -match "Property" |
+                foreach Name |
+                Get-UniqueUnsorted)
 
         # Need to return all entries
         if( -not $single ) { return $result }
@@ -369,7 +370,7 @@ function Get-Ini
             }
             "^([^=]+)\s*=\s*(.*)?\s*$"
             {
-                $name,$value = $matches[1..2]
+                $name, $value = $matches[1..2]
                 $ini[$section][$name.Trim()] = $value
             }
             default
@@ -457,7 +458,7 @@ function ConvertFrom-Ini
             }
             "^([^=]+)\s*=\s*(.*)?\s*$"
             {
-                $name,$value = $matches[1..2]
+                $name, $value = $matches[1..2]
                 $ini[$section][$name.Trim()] = $value
             }
             default

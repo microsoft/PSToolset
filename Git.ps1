@@ -26,7 +26,7 @@ function Initialize-GitConfig
     if( $env:USERDOMAIN -eq "Redmond" )
     {
         # Figure out name of the current user from Active Directory
-        $ntAccount = new-object Security.Principal.NTAccount($env:USERDOMAIN, $env:USERNAME)
+        $ntAccount = New-Object Security.Principal.NTAccount($env:USERDOMAIN, $env:USERNAME)
         $sid = $ntAccount.Translate([Security.Principal.SecurityIdentifier])
         $ldap = [adsi] "LDAP://<SID=$sid>"
 

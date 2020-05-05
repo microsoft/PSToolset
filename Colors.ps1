@@ -111,11 +111,11 @@ function Show-Highlight
 
     param
     (
-         [string] $Regex = "^\s*PS\s+.*>.+",
-         [ConsoleColor] $Color = "Blue",
-         [switch] $DropUnmatched,
-         [switch] $Interactive,
-         [switch] $JSON
+        [string] $Regex = "^\s*PS\s+.*>.+",
+        [ConsoleColor] $Color = "Blue",
+        [switch] $DropUnmatched,
+        [switch] $Interactive,
+        [switch] $JSON
     )
 
     begin
@@ -359,7 +359,7 @@ function Show-ColorizedContent
 
     # Read the text of the file, and parse it
     $content = $content | Out-String
-    $parsed = [Management.Automation.PsParser]::Tokenize($content, [ref] $null) | Sort StartLine, StartColumn
+    $parsed = [Management.Automation.PsParser]::Tokenize($content, [ref] $null) | sort StartLine, StartColumn
 
     function WriteFormattedLine($formatString, [int] $line)
     {
@@ -404,7 +404,7 @@ function Show-ColorizedContent
 
             # Handle the line numbering for multi-line strings
             $lineCounter = $token.StartLine
-            $stringLines = $(-join $content[$token.Start..$tokenEnd] -split "`r`n")
+            $stringLines = $( -join $content[$token.Start..$tokenEnd] -split "`r`n")
             foreach($stringLine in $stringLines)
             {
                 if($lineCounter -gt $token.StartLine)

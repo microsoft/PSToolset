@@ -3,7 +3,7 @@
 
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
     "PSAvoidGlobalVars", "",
-    Justification="We need global PSToolsetAutoCompleteOptions here")]
+    Justification = "We need global PSToolsetAutoCompleteOptions here")]
 param()
 
 # Test if we did that override already, PSToolset can be

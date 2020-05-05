@@ -33,12 +33,12 @@ function Get-Randomized
 
     $array = [Collections.ArrayList]::New(@($input))
 
-     while( $array )
-     {
-         $index = Get-Random $array.Count
-         $array[$index]
-         $array.RemoveAt($index)
-     }
+    while( $array )
+    {
+        $index = Get-Random $array.Count
+        $array[$index]
+        $array.RemoveAt($index)
+    }
 }
 
 function Get-Median

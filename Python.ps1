@@ -20,7 +20,7 @@ function Start-JupyterNotebook
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         'PSUseShouldProcessForStateChangingFunctions', '',
-        Justification='Intended to be this way')]
+        Justification = 'Intended to be this way')]
     param
     (
         [switch] $Force
@@ -90,7 +90,7 @@ function Stop-JupyterNotebook
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         'PSUseShouldProcessForStateChangingFunctions', '',
-        Justification='Intended to be this way')]
+        Justification = 'Intended to be this way')]
     param()
 
     # Test if jupyter is installed
