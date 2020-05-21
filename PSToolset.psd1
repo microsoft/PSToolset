@@ -7,7 +7,7 @@
     RootModule = 'PSToolset.psm1'
 
     # Version number of this module.
-    ModuleVersion = '0.9.5'
+    ModuleVersion = '0.9.6'
 
     # ID used to uniquely identify this module
     GUID = 'c2b885a6-dafe-4aff-9045-414874b9db36'

@@ -153,8 +153,14 @@ function Set-DelayLock
         Justification='Intended to be this way')]
     param
     (
-        [Parameter(Mandatory = $true)] [timespan] $Timeout
+        [Parameter(Mandatory = $true, Position = 0, ParameterSetName = "Minutes")] [int] $Minutes,
+        [Parameter(Mandatory = $true, Position = 0, ParameterSetName = "TimeSpan")] [timespan] $Timeout
     )
+
+    if( $Minutes )
+    {
+        $Timeout = [timespan]::FromMinutes($Minutes)
+    }
 
     "Setting timer for $timeout"
     "Computer would lock at $((Get-Date) + $timeout)"
