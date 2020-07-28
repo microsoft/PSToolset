@@ -7,7 +7,7 @@
     RootModule = 'PSToolset.psm1'
 
     # Version number of this module.
-    ModuleVersion = '0.9.6'
+    ModuleVersion = '0.9.7'
 
     # ID used to uniquely identify this module
     GUID = 'c2b885a6-dafe-4aff-9045-414874b9db36'
@@ -63,6 +63,7 @@
         "ConvertTo-PsObject", "ConvertTo-Hash",
         "Get-Parameter", "Use-Project", "Use-Filter",
         "Get-Ini", "Show-Ini", "ConvertFrom-Ini", "Import-Ini",
+        # DoxFx
         # Files
         "Resolve-ScriptPath", "Get-FileEncoding",
         # Functional
@@ -91,6 +92,7 @@
     FileList =
     'Colors.ps1',
     'Data.ps1',
+    'DocFx.ps1',
     'Files.ps1',
     'Functional.ps1',
     'Git.ps1',

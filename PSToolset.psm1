@@ -7,6 +7,7 @@ Set-StrictMode -Off
 # Include all used files
 . "$PSScriptRoot\Colors.ps1"
 . "$PSScriptRoot\Data.ps1"
+. "$PSScriptRoot\DocFx.ps1"
 . "$PSScriptRoot\Files.ps1"
 . "$PSScriptRoot\Functional.ps1"
 . "$PSScriptRoot\Git.ps1"
