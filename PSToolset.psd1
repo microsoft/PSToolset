@@ -64,6 +64,7 @@
         "Get-Parameter", "Use-Project", "Use-Filter",
         "Get-Ini", "Show-Ini", "ConvertFrom-Ini", "Import-Ini",
         # DoxFx
+        "Start-DocFx",
         # Files
         "Resolve-ScriptPath", "Get-FileEncoding",
         # Functional

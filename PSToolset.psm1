@@ -30,6 +30,7 @@ Set-Alias any       Test-Any
 Set-Alias call      Set-CmdEnvironment
 Set-Alias construct ConvertTo-PsObject
 Set-Alias default   Use-Default
+Set-Alias dfx       Start-DocFx
 Set-Alias first     Get-First
 Set-Alias f         Use-Filter
 Set-Alias gite      Open-GitExtensions

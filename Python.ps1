@@ -6,7 +6,7 @@ function Start-JupyterNotebook
     <#
     .SYNOPSIS
         Start Jupyter Notebook in current folder or $env:DefaultJupyterNotebookPath.
-        Reuse existing notebook already running if possible
+        Reuse existing notebook already running if possible.
 
     .PARAMETER Force
         Don't reuse anything and don't use defaults.
