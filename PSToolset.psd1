@@ -37,6 +37,7 @@
         'call',
         'construct',
         'default',
+        'dfx',
         'f', # filter
         'first',
         'gite',

@@ -39,7 +39,10 @@ function Start-DocFx
     # Helper function
     function Open-DocFx( $folder = $pwd )
     {
-        $path = Get-ChildItem -Recurse docfx.json | select -First 1
+        Push-Location $folder
+        $path = Get-ChildItem -Recurse "docfx.json" | select -First 1
+        Pop-Location
+
         $ps = Start-Process `
             -FilePath "pwsh" `
             -ArgumentList ('-Command "docfx ' + $path + ' --serve"') `
@@ -50,7 +53,10 @@ function Start-DocFx
         Start-Job -Name $cleanupJobName {
             Start-Sleep -Seconds 60
             $ps | Stop-Process
+
         } | Out-Null
+
+        Start-Process http://localhost:8080
     }
 
     # When need to open new docfx in current folder
