@@ -53,7 +53,7 @@ function Get-Median
         Would output 4
     #>
 
-    $sorted = @($input | foreach{ [int] $psitem } | sort)
+    $sorted = @($input | sort)
     if( -not $sorted.Length )
     {
         return
