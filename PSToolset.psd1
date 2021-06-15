@@ -22,7 +22,7 @@
     Description = 'Toolset for Powershell environment'
 
     # Minimum version of the Windows PowerShell engine required by this module
-    PowerShellVersion = '7.0'
+    PowerShellVersion = '5.0'
 
     # Cmdlets to export from this module
     CmdletsToExport = '*'

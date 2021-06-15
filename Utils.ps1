@@ -201,7 +201,16 @@ function Set-CmdEnvironment
             while( $lineQueue.TryDequeue([ref] $line) )
             {
                 $line
-                $lastProgressOutput = [string]::IsNullOrWhiteSpace($line) ? "..." : $line
+
+                $lastProgressOutput = if( [string]::IsNullOrWhiteSpace($line) )
+                {
+                    "..."
+                }
+                else
+                {
+                    $line
+                }
+
                 Write-Progress $info $lastProgressOutput
 
                 $newOutput = $true
