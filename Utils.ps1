@@ -190,10 +190,14 @@ function Set-CmdEnvironment
         $process.BeginOutputReadLine()
         $process.BeginErrorReadLine()
 
-        # Wait until process exit and dump stdout and stderr from it
+        # Stopwatches that we use
+        $totalStopwatch = [System.Diagnostics.Stopwatch]::new()
+        $totalStopwatch.Restart()
+
         $stopwatch = [System.Diagnostics.Stopwatch]::new()
         $stopwatch.Restart()
 
+        # Wait until process exit and dump stdout and stderr from it
         while( -not $process.HasExited )
         {
             $newOutput = $false
@@ -223,7 +227,9 @@ function Set-CmdEnvironment
             {
                 if( $PSVersionTable.PSVersion -ge 7.2 )
                 {
-                    $output = $stopwatch.Elapsed.ToString("hh\:mm\:ss\.f") + " | " + $lastProgressOutput
+                    $totalText = $totalStopwatch.Elapsed.ToString("hh\:mm\:ss\.f")
+                    $localText = $stopwatch.Elapsed.ToString("hh\:mm\:ss\.f")
+                    $output = "Total $totalText | Current $localText"
                     Write-Progress $info $output
                 }
                 else
