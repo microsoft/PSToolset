@@ -221,7 +221,15 @@ function Set-CmdEnvironment
 
             if( -not $newOutput )
             {
-                Write-Progress $info $lastProgressOutput -CurrentOperation $stopwatch.Elapsed.ToString("hh\:mm\:ss\.f")
+                if( $PSVersionTable.PSVersion -ge 7.2 )
+                {
+                    $output = $stopwatch.Elapsed.ToString("hh\:mm\:ss\.f") + " | " + $lastProgressOutput
+                    Write-Progress $info $output
+                }
+                else
+                {
+                    Write-Progress $info $lastProgressOutput -CurrentOperation $stopwatch.Elapsed.ToString("hh\:mm\:ss\.f")
+                }
             }
         }
     }
