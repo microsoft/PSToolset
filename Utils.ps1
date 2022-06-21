@@ -100,6 +100,12 @@ function Set-CmdEnvironment
         -UseNewEnvironment does since this way we are missing essential parts
         of the environment that turned out to be quite needed.
 
+    .PARAMETER PreservePSModulePath
+        Set this switch if you want to keep PSModulePath from the current process.
+        Without this switch it would be set to whatever the called .bat or .cmd
+        script sets it. So if you have a script that explicitly uses old Powershell
+        instead of pwsh you'll end up with parts of PsModulePath missing.
+
     .EXAMPLE
         Set-CmdEnvironment set-env-variables.bat
 
@@ -117,13 +123,20 @@ function Set-CmdEnvironment
         [ValidatePattern('^.+(\.bat|\.cmd|\.exe)$')]
         [string] $Script,
         [string] $Parameters,
-        [switch] $InheritPSModulePath
+        [switch] $InheritPSModulePath,
+        [switch] $PreservePSModulePath
     )
 
     # Showing progress
     $info = "Calling $script $parameters"
     $lastProgressOutput = "Initialization"
     Write-Progress $info $lastProgressOutput
+
+    # Preserve PSModulePath
+    if( $PreservePSModulePath )
+    {
+        $preservedPSModulePath = $env:PSModulePath
+    }
 
     # Helper objects
     $preserved, $GLOBAL:shared = $GLOBAL:shared, @{
@@ -255,6 +268,12 @@ function Set-CmdEnvironment
     {
         Write-Progress $info $lastProgressOutput
         $line
+    }
+
+    # Restore PSModulePath
+    if( $PreservePSModulePath )
+    {
+        $env:PSModulePath = $preservedPSModulePath
     }
 
     Write-Progress $info "Done" -Completed
