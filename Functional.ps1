@@ -83,52 +83,23 @@ function Get-UniqueUnsorted
         "c", "bb", "a" | Get-UniqueUnsorted Length
 
         Would return unique length elements from the input array in the order of appearance: c, bb
-
-    .NOTES
-        [ordered] @{} can't be used here because of this bug in Powershell 4.0:
-
-        $key = 0
-
-        $a = @{}
-        $a."key" = "value"
-        $a.$key = "another value"
-        $a
-
-        Name                           Value
-        ----                           -----
-        key                            value
-        0                              another value
-
-        $a = [ordered] @{}
-        $a."key" = "value"
-        $a.$key = "another value"
-        $a
-
-        Name                           Value
-        ----                           -----
-        key                            another value
     #>
+
     param
     (
         [string] $Property
     )
 
-    $list = @($input)
+    $result = [ordered] @{}
 
-    if( -not $property )
+    foreach( $item in $input )
     {
-        return [Linq.Enumerable]::ToArray( [Linq.Enumerable]::Distinct( [object[]] $list ) )
+        $name = $item
+        if( $property ) { $name = $item.$property }
+        $result.$name = $null
     }
 
-    $dictionary = New-Object Collections.Specialized.OrderedDictionary $list.Count
-    foreach( $item in $list )
-    {
-        if( -not $dictionary.Contains($item.$property) )
-        {
-            $dictionary.Add($item.$property, $item)
-        }
-    }
-    $dictionary.Values
+    $result.Keys
 }
 
 function Test-Any( [scriptblock] $Condition = { $psitem -ne $null } )

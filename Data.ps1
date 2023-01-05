@@ -27,20 +27,23 @@ function ConvertTo-PsObject
         variables $a, $b and $c.
     #>
 
-    $vars = (Get-PSCallStack)[1].GetFrameVariables()
-    $result = [ordered]@{}
-    foreach ($var in $args)
+    $properties = [ordered] @{}
+
+    foreach( $name in $args )
     {
-        if( $vars.ContainsKey($var) )
-        {
-            $result.$var = $vars[$var].Value
-        }
-        else
-        {
-            $result.$var = (Get-Variable $var).Value
-        }
+        $local = Get-Variable $name -Scope local -ea Ignore
+        if( $local ) { $properties.$name = $local.Value; continue }
+
+        $script = Get-Variable $name -Scope script -ea Ignore
+        if( $script ) { $properties.$name = $script.Value; continue }
+
+        $global = Get-Variable $name -Scope global -ea Ignore
+        if( $global ) { $properties.$name = $global.Value; continue }
+
+        Write-Warning "Could not resolve variable with name '$name'"
     }
-    [PsCustomObject] $result
+
+    New-Object -TypeName PSObject -Property $properties
 }
 
 function ConvertTo-Hash( [object] $object )
@@ -380,11 +383,13 @@ function Get-Ini
         }
     }
 
-    # Remove empty sections
+    # Remove empty sections, we create a new ini object since in ConstrainedMode
+    # it is not possible to call any methods, the needed $ini.Remove() included
     if( -not $KeepEmptySections )
     {
-        $empty = @($ini.keys | where{ $ini[$psitem].Count -eq 0 })
-        $empty | foreach{ $ini.Remove($psitem) }
+        $newIni = [ordered]@{}
+        $ini.keys | where{ $ini[$psitem].Count -gt 0 } | foreach{ $newIni[$psitem] = $ini.$psitem }
+        $ini = $newIni
     }
 
     # Copy entries from no-section if it's possible
@@ -468,11 +473,13 @@ function ConvertFrom-Ini
         }
     }
 
-    # Remove empty sections
+    # Remove empty sections, we create a new ini object since in ConstrainedMode
+    # it is not possible to call any methods, the needed $ini.Remove() included
     if( -not $KeepEmptySections )
     {
-        $empty = @($ini.keys | where{ $ini[$psitem].Count -eq 0 })
-        $empty | foreach{ $ini.Remove($psitem) }
+        $newIni = [ordered]@{}
+        $ini.keys | where{ $ini[$psitem].Count -gt 0 } | foreach{ $newIni[$psitem] = $ini.$psitem }
+        $ini = $newIni
     }
 
     # Copy entries from no-section if it's possible
