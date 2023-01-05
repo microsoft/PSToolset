@@ -20,4 +20,5 @@ function reload
     get-module pstoolset | remove-module
     ipmo \\alexko-11\C$\home\Documents\Powershell\Modules\PSToolset\PSToolset.psd1
 }
+$ExecutionContext.SessionState.LanguageMode = "ConstrainedLanguage"
 reload

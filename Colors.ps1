@@ -1,6 +1,20 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
+<#
+To test if the process was redirected we can use:
+
+$process = Get-Process -id $pid
+
+function SCRIPT:Test-ProcessRedirected( $process )
+{
+    $process.StartInfo.RedirectStandardInput -or
+    $process.StartInfo.RedirectStandardOutput -or
+    $process.StartInfo.RedirectStandardError
+}
+
+#>
+
 function Write-Colorized
 {
     <#
