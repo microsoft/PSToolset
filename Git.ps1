@@ -71,18 +71,30 @@ function Open-GitExtensions
 {
     <#
     .SYNOPSIS
-        Open GitExtensions GUI frontend, by default browse window
-        in the current folder would be opened
+        Open GitExtensions GUI frontend
+        By default the browse window in the current folder would be opened
 
     .PARAMETER Args
         Any arguments that should be passed to the git extensions
+
+    .PARAMETER NewEnvironment
+        Use new environment for the process.
+
+        This is a workaround for CoreXT that redefines the available dot net runtimes
+        and this messes up with the .NET 8 runtime lookup done by the latest GitExtensions
 
     .EXAMPLE
         gite commit
 
         Open git extension commit dialog for the repo in the current folder
-
     #>
+
+    param
+    (
+        [Parameter( Mandatory = $false )]
+        [string[]] $args,
+        [switch] $NewEnvironment
+    )
 
     if( -not (Get-Command GitExtensions.exe -ea Ignore) )
     {
@@ -91,7 +103,15 @@ function Open-GitExtensions
 
     $param = $args
     if( -not $param ) { $param = @("browse") }
-    & GitExtensions.exe $param
+
+    if( $NewEnvironment )
+    {
+        pwsh -nop -c "Start-Process GitExtensions.exe -UseNewEnvironment -WorkingDirectory $pwd -ArgumentList $($param -join ' ')"
+    }
+    else
+    {
+        & GitExtensions.exe $param
+    }
 }
 
 function Get-CommitAuthorName( [string] $commit )
