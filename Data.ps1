@@ -383,8 +383,8 @@ function Get-Ini
         }
     }
 
-    # Remove empty sections, we create a new ini object since in ConstrainedMode
-    # it is not possible to call any methods, the needed $ini.Remove() included
+    # Remove empty sections by creating a new object since in
+    # ConstrainedMode we can't use methods like $ini.Remove()
     if( -not $KeepEmptySections )
     {
         $newIni = [ordered]@{}
@@ -473,8 +473,8 @@ function ConvertFrom-Ini
         }
     }
 
-    # Remove empty sections, we create a new ini object since in ConstrainedMode
-    # it is not possible to call any methods, the needed $ini.Remove() included
+    # Remove empty sections by creating a new object since in
+    # ConstrainedMode we can't use methods like $ini.Remove()
     if( -not $KeepEmptySections )
     {
         $newIni = [ordered]@{}
